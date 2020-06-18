@@ -1,4 +1,5 @@
 const initialState = {
+  activeId: 0,
   notes: [
     {
       id: 0,
@@ -16,5 +17,4 @@ const initialState = {
       contents: "three",
     },
   ],
-  activeId: 0,
 };

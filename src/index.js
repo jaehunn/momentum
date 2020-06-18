@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const App = () => {
   const [state, setState] = r.useState(initialState);
+  const nextId = r.useRef(3);
   const { notes, activeId } = state;
 
   const activeNote = notes.filter((note) => note.id === activeId)[0];
@@ -19,15 +20,56 @@ const App = () => {
     });
   };
 
+  const onChange = (e) => {
+    const newNotes = [...notes];
+    const note = newNotes.find((note) => note.id === activeId);
+    note[e.target.name] = e.target.value;
+
+    setState({
+      activeId,
+      notes: newNotes,
+    });
+  };
+
+  const onCreate = () => {
+    const newNote = {
+      id: nextId.current,
+      title: "",
+      contents: "",
+    };
+
+    setState({
+      activeId: nextId.current,
+      notes: notes.concat(newNote),
+    });
+
+    nextId.current += 1;
+  };
+
+  const onRemove = () => {
+    const newNotes = notes.filter((note) => note.id !== activeId);
+    console.log(newNotes);
+
+    setState({
+      activeId: notes.length ? notes[0].id : null,
+      notes: newNotes,
+    });
+  };
+
   return e(
     "div",
     { className: "app" },
-    e(Header),
-    e("div", { className: "container" }, e(List, { notes, activeId, onClick }), notes.length && e(Note, { activeNote }))
+    e(Header, { onCreate, onRemove }),
+    e(
+      "div",
+      { className: "container" },
+      e(List, { notes, activeId, onClick }),
+      notes.length && e(Note, { activeNote, onChange })
+    )
   );
 };
 
-const Header = () => {
+const Header = ({ onCreate, onRemove }) => {
   return e(
     "header",
     {},
@@ -37,7 +79,12 @@ const Header = () => {
       e("a", { href: "#", target: "_blank" }, e("img", { className: "logo", src: "./src/logo.png" })),
       e("span", {}, "Simple Note")
     ),
-    e("div", { className: "btns-group" }, e("button", {}, "ADD"), e("button", {}, "DELETE"))
+    e(
+      "div",
+      { className: "btns-group" },
+      e("button", { onClick: () => onCreate() }, "ADD"),
+      e("button", { onClick: () => onRemove() }, "DELETE")
+    )
   );
 };
 
@@ -60,13 +107,13 @@ const ListItem = ({ id, active, title, contents, onClick }) => {
   );
 };
 
-const Note = ({ activeNote }) => {
+const Note = ({ activeNote, onChange }) => {
   const { title, contents } = activeNote;
 
   return e(
     "div",
     { className: "note" },
-    e("input", { className: "title", value: title }),
-    e("textarea", { className: "note-contents", value: contents })
+    e("input", { className: "title", name: "title", value: title, onChange: (e) => onChange(e) }),
+    e("textarea", { className: "note-contents", name: "contents", value: contents, onChange: (e) => onChange(e) })
   );
 };
