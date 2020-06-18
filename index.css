@@ -1,0 +1,119 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'NaunmSquare', sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+}
+
+div.app>div.container {
+    display: flex;
+    height: calc(100vh - 50px)
+}
+
+header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    border-bottom: 1px solid #eee;
+}
+
+header>div.title {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+header>div.title>a {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px;
+}
+
+header>div.title>a>img.logo {
+    height: 50px;
+    border-radius: 100%;
+}
+
+
+header>div.title>span {
+    vertical-align: middle;
+}
+
+header>div.btns-group>button {
+    border: 0px;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+div.list {
+    min-width: 360px;
+    width: 460px;
+    height: 100%;
+    border-right: 1px solid #eee;
+}
+
+div.list-item {
+    padding: 20px 30px;
+    cursor: pointer;
+}
+
+div.list-item:hover {
+    background-color: #f5f5f5;
+}
+
+div.list-item.active {
+    background-color: #eef3f8;
+}
+
+div.list-item>div.title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+div.list-item>div.list-contents {
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+div.note {
+    width: 100%;
+    padding: 40px 70px 0px 70px;
+}
+
+div.note>input.title {
+    display: flex;
+    font-size: 24px;
+    font-weight: 800;
+    font-family: inherit;
+    border: 0px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+    width: 100%;
+    outline: none;
+}
+
+div.note>textarea.note-contents {
+    display: bloc;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: inherit;
+    border: 0px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    outline: none;
+    resize: none;
+}
