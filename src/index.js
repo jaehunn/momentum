@@ -7,7 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const App = () => {
-  return e("div", { className: "app" }, e(Header), e("div", { className: "container" }, e(List), e(Note)));
+  const [state, setState] = r.useState(initialState);
+  const { notes, activeId } = state;
+
+  const activeNote = notes.filter((note) => note.id === activeId)[0];
+
+  const onClick = (id) => {
+    setState({
+      ...state,
+      activeId: id,
+    });
+  };
+
+  return e(
+    "div",
+    { className: "app" },
+    e(Header),
+    e("div", { className: "container" }, e(List, { notes, activeId, onClick }), notes.length && e(Note, { activeNote }))
+  );
 };
 
 const Header = () => {
@@ -24,24 +41,32 @@ const Header = () => {
   );
 };
 
-const List = () => {
-  return e("div", { className: "list" }, e(ListItem), e(ListItem));
-};
-
-const ListItem = () => {
+const List = ({ notes, activeId, onClick }) => {
   return e(
     "div",
-    { className: "list-item" },
-    e("div", { className: "title" }, "Title"),
-    e("div", { className: "list-contents" }, "Contents")
+    { className: "list" },
+    notes.map(({ id, title, contents }) => {
+      return e(ListItem, { key: id, id, active: activeId === id, title, contents, onClick: () => onClick(id) });
+    })
   );
 };
 
-const Note = () => {
+const ListItem = ({ id, active, title, contents, onClick }) => {
+  return e(
+    "div",
+    { className: active ? "list-item active" : "list-item", onClick },
+    e("div", { className: "title" }, title || "Title"),
+    e("div", { className: "list-contents" }, contents || "Contents")
+  );
+};
+
+const Note = ({ activeNote }) => {
+  const { title, contents } = activeNote;
+
   return e(
     "div",
     { className: "note" },
-    e("input", { className: "title" }),
-    e("textarea", { className: "note-contents" })
+    e("input", { className: "title", value: title }),
+    e("textarea", { className: "note-contents", value: contents })
   );
 };
