@@ -11,11 +11,11 @@ const App = () => {
   const nextId = r.useRef(3);
   const { notes, activeId } = state;
 
-  const activeNote = notes.filter((note) => note.id === activeId)[0];
+  const activeNote = notes.find((note) => note.id === activeId);
 
   const onClick = (id) => {
     setState({
-      ...state,
+      notes,
       activeId: id,
     });
   };
@@ -48,11 +48,10 @@ const App = () => {
 
   const onRemove = () => {
     const newNotes = notes.filter((note) => note.id !== activeId);
-    console.log(newNotes);
 
     setState({
-      activeId: notes.length ? notes[0].id : null,
       notes: newNotes,
+      activeId: newNotes.length ? newNotes[0].id : null,
     });
   };
 
