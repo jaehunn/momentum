@@ -1,5 +1,5 @@
 import React from 'react';
-
+import cn from 'classnames';
 import {
   MdCheckBoxOutlineBlank,
   MdCheckBox,
@@ -7,23 +7,31 @@ import {
 } from 'react-icons/md';
 import './TodoList.scss';
 
-const TodoList = () => {
+const TodoList = ({ todos, onRemove, onToggle }) => {
   return (
     <div className="TodoList">
-      <TodoListItem />
-      <TodoListItem />
+      {todos.map((todo) => (
+        <TodoListItem
+          todo={todo}
+          key={todo.id}
+          onRemove={onRemove}
+          onToggle={onToggle}
+        />
+      ))}
     </div>
   );
 };
 
-const TodoListItem = () => {
+const TodoListItem = ({ todo, onRemove, onToggle }) => {
+  const { id, text, checked } = todo;
+
   return (
     <div className="TodoListItem">
-      <div className="checkbox">
-        <MdCheckBoxOutlineBlank />
-        <div className="text">할 일</div>
+      <div className={cn('checkbox', { checked })} onClick={() => onToggle(id)}>
+        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        <div className="text">{text}</div>
       </div>
-      <div className="remove">
+      <div className="remove" onClick={() => onRemove(id)}>
         <MdRemoveCircleOutline />
       </div>
     </div>
