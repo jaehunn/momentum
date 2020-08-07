@@ -1,1 +1,50 @@
-https://velog.io/@bosco/TOY-%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%AA%A8%EB%A9%98%ED%85%80-%EB%A7%8C%EB%93%A4%EA%B8%B0-1
+## React Basic Concepts
+
+### 0. Background
+
+- React features
+- Rendering/Updating process
+
+### 1. Class Component
+
+- Props and State
+
+  - props / defaultProps / children / propTypes
+  - state / setState()
+
+- Event Handling
+
+  - Handler attachment: Method binding, transform-class-properties
+  - Ref Property: Callback, React.createRef(), Component Ref
+
+- Lifecycle Method
+  - constructor()
+  - getDerivedStateFromProps()
+  - render()
+  - componentDidMount()
+  - shouldComponentUpdate()
+  - getSnapshotBeforeUpdate()
+  - componentDidUpdate()
+  - componentWillUnmount()
+  - componentDidCatch()
+
+### 2. Functional Component
+
+- Props and State
+
+  - props / defaultProps / children / propTypes
+  - state / useState()
+
+- Event Handling
+
+  - Handler attachment
+  - useRef(): Local variable, Target element
+
+- Hooks
+  - useState()
+  - useEffect()
+  - useMemo()
+  - useCallback()
+  - useReducer()
+  - useRef()
+  - Custom Hook
