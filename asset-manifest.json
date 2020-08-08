@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/momentum/static/css/main.052983bf.chunk.css",
+    "main.js": "/momentum/static/js/main.dd02d4fa.chunk.js",
+    "main.js.map": "/momentum/static/js/main.dd02d4fa.chunk.js.map",
+    "runtime-main.js": "/momentum/static/js/runtime-main.c889f98a.js",
+    "runtime-main.js.map": "/momentum/static/js/runtime-main.c889f98a.js.map",
+    "static/js/2.5deec308.chunk.js": "/momentum/static/js/2.5deec308.chunk.js",
+    "static/js/2.5deec308.chunk.js.map": "/momentum/static/js/2.5deec308.chunk.js.map",
+    "index.html": "/momentum/index.html",
+    "precache-manifest.cc2659089696061fa69925629598b28d.js": "/momentum/precache-manifest.cc2659089696061fa69925629598b28d.js",
+    "service-worker.js": "/momentum/service-worker.js",
+    "static/css/main.052983bf.chunk.css.map": "/momentum/static/css/main.052983bf.chunk.css.map",
+    "static/js/2.5deec308.chunk.js.LICENSE.txt": "/momentum/static/js/2.5deec308.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/momentum/static/media/bg.cb45c976.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c889f98a.js",
+    "static/js/2.5deec308.chunk.js",
+    "static/css/main.052983bf.chunk.css",
+    "static/js/main.dd02d4fa.chunk.js"
+  ]
+}
